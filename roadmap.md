@@ -3,4 +3,4 @@
 - [x] Rebuild hero and brand statement
 - [x] Elevate about, services, work, and process
 - [x] Refine testimonial, final CTA, footer, and mobile
-- [ ] Verify desktop, mobile, motion, and accessibility
+- [x] Verify desktop, mobile, motion, and accessibility
