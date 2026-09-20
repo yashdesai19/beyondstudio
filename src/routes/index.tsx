@@ -3,6 +3,7 @@ import { Header } from "@/components/beyond/Header";
 import { Hero } from "@/components/beyond/Hero";
 import { About, Industries, Process, Services, Statement } from "@/components/beyond/EditorialSections";
 import { Portfolio } from "@/components/beyond/Portfolio";
+import { CustomCursor } from "@/components/beyond/CustomCursor";
 import { Contact, Footer, TestimonialFaq } from "@/components/beyond/ContactFooter";
 
 export const Route = createFileRoute("/")({
@@ -16,4 +17,4 @@ export const Route = createFileRoute("/")({
   ]}),
   component: Index,
 });
-function Index(){return <><Header/><main><Hero/><Statement/><About/><Services/><Portfolio/><Process/><Industries/><TestimonialFaq/><Contact/></main><Footer/></>}
+function Index(){return <><CustomCursor/><Header/><main><Hero/><Statement/><About/><Services/><Portfolio/><Process/><Industries/><TestimonialFaq/><Contact/></main><Footer/></>}
