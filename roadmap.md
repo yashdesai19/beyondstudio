@@ -1,6 +1,6 @@
 ## Redesign roadmap
-- [ ] Audit current page and design system
-- [ ] Rebuild hero and brand statement
-- [ ] Elevate about, services, work, and process
-- [ ] Refine testimonial, final CTA, footer, and mobile
+- [x] Audit current page and design system
+- [x] Rebuild hero and brand statement
+- [x] Elevate about, services, work, and process
+- [x] Refine testimonial, final CTA, footer, and mobile
 - [ ] Verify desktop, mobile, motion, and accessibility
