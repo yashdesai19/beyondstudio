@@ -27,7 +27,7 @@ export function Header() {
     <Button asChild variant="gold" size="lg" className="header-cta"><a href="#contact">Start a project <ArrowUpRight /></a></Button>
     <Button variant="iconDark" size="icon" className="menu-toggle" aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open} onClick={() => setOpen(!open)}>{open ? <X /> : <Menu />}</Button>
     <div className={`mobile-menu ${open ? "is-open" : ""}`} aria-hidden={!open}>
-      <div className="mobile-menu-inner">{links.map((label, i) => <button key={label} onClick={() => go(ids[i])}><span>0{i + 1}</span>{label}</button>)}</div>
+      <div className="mobile-menu-inner">{links.map((label, i) => { const id = ids[i]; return id ? <button key={label} onClick={() => go(id)}><span>0{i + 1}</span>{label}</button> : null; })}</div>
       <p>Rajkot, Gujarat · Available worldwide</p>
     </div>
   </header>;
