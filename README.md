@@ -750,17 +750,10 @@ If any section feels generic, redesign that section instead of simply adding mor
 
 The final website should feel premium, memorable, elegant, modern, technically polished, and visually distinctive.
 
-This project was built with [Lovable](https://lovable.dev).
+## Beyond — Creative Studio
 
-**Live app**: https://golden-era-collective.lovable.app
-
-## Build with Lovable
-
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/682e52fb-41f1-4401-9833-d16a345486d2).
-
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+Rajkot, Gujarat · Working worldwide
+Design · Technology · Experience
 
 ## Development
 

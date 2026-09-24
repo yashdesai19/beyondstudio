@@ -1,6 +1,18 @@
 import type { ReactNode } from "react";
-import { Reveal } from "./Reveal";
+import { useReveal } from "@/hooks/use-reveal";
+import { cn } from "@/lib/utils";
 
 export function AnimatedText({ lines, className = "" }: { lines: ReactNode[]; className?: string }) {
-  return <div className={`animated-text ${className}`}>{lines.map((line, index) => <div className="text-mask" key={index}><Reveal delay={index * 90}><span>{line}</span></Reveal></div>)}</div>;
+  const { ref, visible } = useReveal<HTMLDivElement>();
+  return (
+    <div ref={ref} className={cn("animated-text", visible && "is-visible", className)}>
+      {lines.map((line, index) => (
+        <div className="text-mask" key={index}>
+          <div className={cn("text-line", `text-line-${index + 1}`)}>
+            <span>{line}</span>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 }
