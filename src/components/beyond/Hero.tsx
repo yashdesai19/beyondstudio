@@ -1,11 +1,9 @@
 import { ArrowDown, ArrowUpRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { MagneticElement } from "./MagneticElement";
-import { HeroScene3D } from "./HeroScene3D";
 
 export function Hero() {
   return <section id="home" className="hero-section">
-    <HeroScene3D />
     <div className="hero-grain" />
     <div className="hero-content">
       <p className="eyebrow"><span /> Design <i/> Branding <i/> Printing</p>
