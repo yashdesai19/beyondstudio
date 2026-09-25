@@ -5,6 +5,7 @@ import { Reveal } from "./Reveal";
 import { SectionLabel } from "./SectionLabel";
 import { useReveal } from "@/hooks/use-reveal";
 import { cn } from "@/lib/utils";
+import { useCountUp } from "@/hooks/use-counter";
 
 function StatementRule() {
   const { ref, visible } = useReveal<HTMLDivElement>();
@@ -177,10 +178,57 @@ export function About() {
 }
 
 function Stat({ value, label }: { value: string; label: string }) {
+  const numericPart = parseInt(value.replace(/\D/g, ""), 10) || 0;
+  const suffix = value.replace(/[\d]/g, "");
+  const hasLeadingZero = value.startsWith("0") && numericPart < 10;
+  const { count, ref } = useCountUp(numericPart, 1800);
+
+  const formattedCount = hasLeadingZero
+    ? `0${count}`
+    : `${count}${suffix}`;
+
   return (
-    <div className="stat counted">
-      <strong>{value}</strong>
+    <div ref={ref} className="stat counted">
+      <strong>{formattedCount}</strong>
       <span>{label}</span>
+    </div>
+  );
+}
+
+function ServiceCard({ s, idx }: { s: typeof servicesData[0]; idx: number }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const handlePointerMove = (e: React.PointerEvent<HTMLDivElement>) => {
+    const card = cardRef.current;
+    if (!card) return;
+    const rect = card.getBoundingClientRect();
+    card.style.setProperty("--mouse-x", `${e.clientX - rect.left}px`);
+    card.style.setProperty("--mouse-y", `${e.clientY - rect.top}px`);
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      className="beyond-service-card"
+      onPointerMove={handlePointerMove}
+    >
+      <div className="beyond-service-spotlight" aria-hidden="true" />
+      <div className="beyond-service-head">
+        <span className="beyond-service-count">0{idx + 1} / Pillar</span>
+        <h3 className="beyond-service-title">{s.category}</h3>
+        <p className="beyond-service-desc">{s.description}</p>
+      </div>
+
+      <div className="beyond-service-divider" />
+
+      <ul className="beyond-service-list">
+        {s.items.map((item) => (
+          <li key={item} className="beyond-service-item">
+            <FlowerBullet />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
@@ -203,24 +251,7 @@ export function Services() {
         <div className="beyond-services-grid">
           {servicesData.map((s, idx) => (
             <Reveal key={s.category} delay={idx * 120}>
-              <div className="beyond-service-card">
-                <div className="beyond-service-head">
-                  <span className="beyond-service-count">0{idx + 1} / Pillar</span>
-                  <h3 className="beyond-service-title">{s.category}</h3>
-                  <p className="beyond-service-desc">{s.description}</p>
-                </div>
-
-                <div className="beyond-service-divider" />
-
-                <ul className="beyond-service-list">
-                  {s.items.map((item) => (
-                    <li key={item} className="beyond-service-item">
-                      <FlowerBullet />
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <ServiceCard s={s} idx={idx} />
             </Reveal>
           ))}
         </div>

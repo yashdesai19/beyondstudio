@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { SectionLabel } from "./SectionLabel";
 import { Reveal } from "./Reveal";
 import { projects, type Project } from "@/data/projects";
+import { TiltCard } from "./TiltCard";
 
 const filterOptions = ["All", "Branding Design", "Packaging", "Campaign"];
 
@@ -111,39 +112,40 @@ export function Portfolio() {
         {/* 4-Column DevOpus Grid View */}
         <div className="devopus-grid" role="list">
           {filteredProjects.map((project) => (
-            <article
-              key={project.id}
-              role="listitem"
-              className="devopus-card"
-              onClick={() => openProjectModal(project)}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  openProjectModal(project);
-                }
-              }}
-              tabIndex={0}
-              aria-label={`Open case study for ${project.title}`}
-            >
-              <div className="devopus-card-media">
-                <img
-                  src={project.cover}
-                  alt={`${project.title} cover preview`}
-                  loading="lazy"
-                />
-                <div className="devopus-card-overlay" />
+            <TiltCard key={project.id} maxTilt={6} glare={true} className="devopus-card-tilt-wrap">
+              <article
+                role="listitem"
+                className="devopus-card"
+                onClick={() => openProjectModal(project)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    openProjectModal(project);
+                  }
+                }}
+                tabIndex={0}
+                aria-label={`Open case study for ${project.title}`}
+              >
+                <div className="devopus-card-media">
+                  <img
+                    src={project.cover}
+                    alt={`${project.title} cover preview`}
+                    loading="lazy"
+                  />
+                  <div className="devopus-card-overlay" />
 
-                {/* DevOpus Hover Title (bsp-hover) */}
-                <div className="devopus-card-hover">
-                  <span className="devopus-tag">{project.category}</span>
-                  <h3 className="devopus-card-title">{project.title}</h3>
-                  <div className="devopus-card-action">
-                    <span>View Case Study</span>
-                    <ArrowUpRight />
+                  {/* DevOpus Hover Title (bsp-hover) */}
+                  <div className="devopus-card-hover">
+                    <span className="devopus-tag">{project.category}</span>
+                    <h3 className="devopus-card-title">{project.title}</h3>
+                    <div className="devopus-card-action">
+                      <span>View Case Study</span>
+                      <ArrowUpRight />
+                    </div>
                   </div>
                 </div>
-              </div>
-            </article>
+              </article>
+            </TiltCard>
           ))}
         </div>
       </div>
